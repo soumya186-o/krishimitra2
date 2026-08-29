@@ -1,0 +1,217 @@
+package com.krishimitra.app.ui.screens
+
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.krishimitra.app.data.local.DatabaseHelper
+import com.krishimitra.app.domain.model.Crop
+import com.krishimitra.app.ui.theme.*
+
+@Composable
+fun CropGuideScreen(dbHelper: DatabaseHelper) {
+    var searchQuery by remember { mutableStateOf("") }
+    val allCrops = remember { dbHelper.getAllCrops() }
+
+    val filteredCrops = remember(searchQuery, allCrops) {
+        if (searchQuery.isBlank()) allCrops
+        else allCrops.filter {
+            it.nameHi.contains(searchQuery, ignoreCase = true) ||
+            it.nameEn.contains(searchQuery, ignoreCase = true) ||
+            (it.categoryHi?.contains(searchQuery, ignoreCase = true) == true)
+        }
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(BackgroundLight)
+            .padding(16.dp)
+    ) {
+        OutlinedTextField(
+            value = searchQuery,
+            onValueChange = { searchQuery = it },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 14.dp),
+            placeholder = { Text("फसल खोजें (धान, गेहूं, मक्का, आदि)…", fontSize = 14.sp) },
+            leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
+            shape = RoundedCornerShape(14.dp),
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = GreenPrimary,
+                unfocusedBorderColor = CardBorder,
+                focusedContainerColor = Color.White,
+                unfocusedContainerColor = Color.White
+            )
+        )
+
+        LazyColumn(
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            modifier = Modifier.fillMaxSize()
+        ) {
+            items(filteredCrops) { crop ->
+                CropExpandableCard(crop = crop)
+            }
+        }
+    }
+}
+
+@Composable
+fun CropExpandableCard(crop: Crop) {
+    var isExpanded by remember { mutableStateOf(false) }
+
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { isExpanded = !isExpanded },
+        shape = RoundedCornerShape(14.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(2.dp)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            // Header Row
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column {
+                    Text(
+                        text = crop.nameHi,
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            fontWeight = FontWeight.Bold,
+                            color = GreenPrimary
+                        )
+                    )
+                    Text(
+                        text = "${crop.nameEn} (${crop.scientificName ?: ""})",
+                        style = MaterialTheme.typography.bodySmall.copy(
+                            color = TextSecondary,
+                            fontSize = 12.sp
+                        )
+                    )
+                }
+
+                Surface(
+                    shape = RoundedCornerShape(8.dp),
+                    color = GreenPrimaryContainer.copy(alpha = 0.6f)
+                ) {
+                    Text(
+                        text = crop.categoryHi ?: "फसल",
+                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
+                        style = MaterialTheme.typography.labelSmall.copy(
+                            color = GreenDark,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 11.sp
+                        )
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            // Quick Facts Row
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color(0xFFF9FBF8))
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Column {
+                    Text(text = "बुवाई मौसम:", fontSize = 11.sp, color = TextSecondary)
+                    Text(text = crop.sowingSeasonHi ?: "", fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                }
+                Column {
+                    Text(text = "मिट्टी पीएच:", fontSize = 11.sp, color = TextSecondary)
+                    Text(text = crop.soilPh ?: "6.0 - 7.5", fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                }
+                Column {
+                    Text(text = "अनुकूल तापमान:", fontSize = 11.sp, color = TextSecondary)
+                    Text(text = crop.temperature ?: "", fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                }
+            }
+
+            // Expanded Details
+            AnimatedVisibility(visible = isExpanded) {
+                Column(modifier = Modifier.padding(top = 12.dp)) {
+                    Divider(color = Color(0xFFEEEEEE), thickness = 0.8.dp)
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    CropDetailSection(title = "उपयुक्त मिट्टी:", content = crop.soilHi)
+                    CropDetailSection(title = "सिंचाई प्रबंधन:", content = crop.irrigationHi)
+                    CropDetailSection(title = "खाद एवं उर्वरक (NPK):", content = crop.fertilizerHi)
+                    CropDetailSection(title = "कटाई व अवधि:", content = crop.harvestingHi)
+                    CropDetailSection(title = "प्रमुख कीट:", content = crop.pestsHi)
+                    CropDetailSection(title = "प्रमुख रोग:", content = crop.diseasesHi)
+                    CropDetailSection(title = "उन्नत तकनीक व सुझाव:", content = crop.cultivationTipsHi)
+
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Text(
+                        text = "स्रोत: ${crop.source ?: "भाकृअनुप (ICAR)"}",
+                        style = MaterialTheme.typography.labelSmall.copy(
+                            color = TextSecondary,
+                            fontSize = 11.sp
+                        )
+                    )
+                }
+            }
+
+            // Expand Hint
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 6.dp),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = if (isExpanded) "कम विवरण देखें" else "विस्तृत विवरण देखें",
+                    fontSize = 11.sp,
+                    color = GreenPrimary,
+                    fontWeight = FontWeight.Medium
+                )
+                Icon(
+                    imageVector = if (isExpanded) Icons.Default.ExpandLess else Icons.Default.ExpandMore,
+                    contentDescription = null,
+                    tint = GreenPrimary,
+                    modifier = Modifier.size(16.dp)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun CropDetailSection(title: String, content: String?) {
+    if (content.isNullOrBlank()) return
+    Column(modifier = Modifier.padding(vertical = 4.dp)) {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.labelMedium.copy(
+                fontWeight = FontWeight.Bold,
+                color = GreenPrimary
+            )
+        )
+        Text(
+            text = content,
+            style = MaterialTheme.typography.bodySmall.copy(
+                color = TextPrimary,
+                lineHeight = 18.sp
+            )
+        )
+    }
+}

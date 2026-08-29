@@ -1,0 +1,28 @@
+# Android & Gradle
+.gradle/
+build/
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+*.apk
+!app-debug.apk
+
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+backend/.env
+.pytest_cache/
+
+# IDE & OS files
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Task & Scratch Logs
+*.log

@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">KrishiMitra</string>
+    <string name="tagline">Your Intelligent Farming Companion</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_assistant">Assistant</string>
+    <string name="nav_camera">Scan Crop</string>
+    <string name="nav_weather">Weather</string>
+    <string name="nav_schemes">Schemes</string>
+    <string name="nav_loans">Loans</string>
+
+    <!-- Status -->
+    <string name="status_online">Online</string>
+    <string name="status_offline">Offline Mode (Local Knowledge Active)</string>
+    <string name="status_syncing">Syncing verified agricultural records…</string>
+    <string name="status_synced">Verified Knowledge Updated</string>
+
+    <!-- Home Screen -->
+    <string name="home_welcome">Welcome, Farmer Friend</string>
+    <string name="home_quick_actions">Quick Farming Tools</string>
+    <string name="action_ask_ai">Ask Agriculture AI</string>
+    <string name="action_ask_ai_desc">Instant answers on soil, crops, seeds, fertilizer</string>
+    <string name="action_scan_leaf">Scan Diseased Leaf</string>
+    <string name="action_scan_leaf_desc">Offline camera crop diagnosis &amp; treatment</string>
+    <string name="action_weather">Weather Advisory</string>
+    <string name="action_weather_desc">Live forecast &amp; practical farm precautions</string>
+    <string name="action_schemes">Government Schemes</string>
+    <string name="action_schemes_desc">PM-KISAN, PMFBY, KCC &amp; Subsidies</string>
+    <string name="action_loans">Agricultural Loans</string>
+    <string name="action_loans_desc">KCC crop credit, gold loans &amp; NABARD</string>
+    <string name="action_crops">Crop Guide</string>
+    <string name="action_crops_desc">ICAR cultivation manuals for 15 Indian crops</string>
+
+    <!-- AI Assistant -->
+    <string name="assistant_title">KrishiMitra AI Assistant</string>
+    <string name="assistant_hint">Ask any question in Hindi or English…</string>
+    <string name="assistant_hold_to_talk">Hold to Talk</string>
+    <string name="assistant_listening">Listening… Release to Send</string>
+    <string name="assistant_source_label">Source:</string>
+    <string name="assistant_verified_tag">Verified Government / ICAR</string>
+    <string name="voice_mode_auto">Voice: Auto (Hindi/English)</string>
+    <string name="voice_mode_hi">Voice: Hindi (हिंदी)</string>
+    <string name="voice_mode_en">Voice: English</string>
+
+    <!-- Camera / Disease Detection -->
+    <string name="camera_title">Leaf Disease Scanner</string>
+    <string name="camera_instruction">Align affected leaf inside frame in clear natural daylight</string>
+    <string name="camera_capture">Analyze Leaf</string>
+    <string name="diagnosis_result">Diagnosis Result</string>
+    <string name="diagnosis_crop">Crop:</string>
+    <string name="diagnosis_disease">Disease:</string>
+    <string name="diagnosis_confidence">Confidence:</string>
+    <string name="diagnosis_symptoms">Observed Symptoms:</string>
+    <string name="diagnosis_organic">Organic / IPM Remedy:</string>
+    <string name="diagnosis_chemical">Chemical Remedy (Verified ICAR Dosage):</string>
+    <string name="diagnosis_prevention">Preventive Measures:</string>
+    <string name="uncertain_warning">Image quality is insufficient for a reliable diagnosis. Please capture a steady closeup of the leaf in daylight.</string>
+
+    <!-- Weather -->
+    <string name="weather_title">Agricultural Weather</string>
+    <string name="weather_current_temp">Current Temperature</string>
+    <string name="weather_humidity">Humidity</string>
+    <string name="weather_rainfall">Rain Probability</string>
+    <string name="weather_advisory_heading">Practical Farmer Advisory</string>
+    <string name="weather_forecast_heading">5-Day Farm Forecast</string>
+    <string name="select_district">Select District / Region</string>
+
+    <!-- Schemes & Loans -->
+    <string name="schemes_title">Verified Government Schemes</string>
+    <string name="loans_title">Agricultural Financing &amp; Loans</string>
+    <string name="view_official_portal">Open Official Portal</string>
+    <string name="eligibility">Eligibility:</string>
+    <string name="benefits">Benefits:</string>
+    <string name="how_to_apply">How to Apply:</string>
+    <string name="interest_rate">Interest Rate:</string>
+    <string name="max_limit">Max Limit:</string>
+    <string name="documents_required">Documents Required:</string>
+
+    <!-- Common -->
+    <string name="search_placeholder">Search crops, schemes, diseases…</string>
+    <string name="loading">Loading…</string>
+    <string name="retry">Retry</string>
+    <string name="sources_attribution">Sources &amp; Institutional Attribution</string>
+</resources>

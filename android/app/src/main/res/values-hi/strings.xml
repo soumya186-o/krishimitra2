@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">कृषिमित्र</string>
+    <string name="tagline">आपका डिजिटल कृषि साथी</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">मुख्य पृष्ठ</string>
+    <string name="nav_assistant">कृषि सहायक</string>
+    <string name="nav_camera">रोग जांच</string>
+    <string name="nav_weather">मौसम</string>
+    <string name="nav_schemes">योजनाएं</string>
+    <string name="nav_loans">ऋण</string>
+
+    <!-- Status -->
+    <string name="status_online">ऑनलाइन</string>
+    <string name="status_offline">ऑफ़लाइन मोड (स्थानीय ज्ञान सक्रिय)</string>
+    <string name="status_syncing">नवीनतम कृषि जानकारी सिंक हो रही है…</string>
+    <string name="status_synced">प्रमाणित कृषि डेटा अपडेटेड है</string>
+
+    <!-- Home Screen -->
+    <string name="home_welcome">नमस्ते, किसान भाई</string>
+    <string name="home_quick_actions">प्रमुख कृषि सुविधाएं</string>
+    <string name="action_ask_ai">कृषि एआई से पूछें</string>
+    <string name="action_ask_ai_desc">मिट्टी, फसल, खाद, बीज व रोग पर तुरंत उत्तर पाएं</string>
+    <string name="action_scan_leaf">पत्ती रोग जांचें</string>
+    <string name="action_scan_leaf_desc">कैमरे से बिना इंटरनेट रोग पहचान व उपचार</string>
+    <string name="action_weather">मौसम एवं कृषि सलाह</string>
+    <string name="action_weather_desc">ताजा मौसम व खेती के लिए व्यावहारिक सावधानियां</string>
+    <string name="action_schemes">सरकारी योजनाएं</string>
+    <string name="action_schemes_desc">पीएम किसान, फसल बीमा, केसीसी व सरकारी अनुदान</string>
+    <string name="action_loans">कृषि ऋण व वित्तीय सहायता</string>
+    <string name="action_loans_desc">केसीसी फसली ऋण, गोल्ड लोन व नाबार्ड योजनाएं</string>
+    <string name="action_crops">फसल मार्गदर्शिका</string>
+    <string name="action_crops_desc">15 प्रमुख भारतीय फसलों की उन्नत खेती के तरीके</string>
+
+    <!-- AI Assistant -->
+    <string name="assistant_title">कृषिमित्र एआई सहायक</string>
+    <string name="assistant_hint">हिंदी या अंग्रेजी में कोई भी सवाल पूछें…</string>
+    <string name="assistant_hold_to_talk">बोलने के लिए दबाए रखें</string>
+    <string name="assistant_listening">सुन रहे हैं… भेजने के लिए छोड़ें</string>
+    <string name="assistant_source_label">स्रोत:</string>
+    <string name="assistant_verified_tag">आईसीएआर / सरकारी प्रमाणित</string>
+    <string name="voice_mode_auto">आवाज: स्वतः (हिंदी/अंग्रेजी)</string>
+    <string name="voice_mode_hi">आवाज: हिंदी</string>
+    <string name="voice_mode_en">आवाज: अंग्रेजी</string>
+
+    <!-- Camera / Disease Detection -->
+    <string name="camera_title">फसल रोग पहचान स्कैनर</string>
+    <string name="camera_instruction">प्रभावित पत्ती को दिन की प्राकृतिक रोशनी में हरे फ्रेम के बीच रखें</string>
+    <string name="camera_capture">रोग की जांच करें</string>
+    <string name="diagnosis_result">जांच परिणाम</string>
+    <string name="diagnosis_crop">फसल:</string>
+    <string name="diagnosis_disease">संभावित रोग:</string>
+    <string name="diagnosis_confidence">सटीकता (विश्वास):</string>
+    <string name="diagnosis_symptoms">रोग के मुख्य लक्षण:</string>
+    <string name="diagnosis_organic">जैविक / देसी उपचार:</string>
+    <string name="diagnosis_chemical">रासायनिक उपचार (आईसीएआर अनुशंसित मात्रा):</string>
+    <string name="diagnosis_prevention">बचाव व सावधानियां:</string>
+    <string name="uncertain_warning">फोटो स्पष्ट नहीं है अथवा रोशनी कम है। सही पहचान के लिए कृपया स्थिर हाथ से साफ रोशनी में पत्ती की दूसरी फोटो लें।</string>
+
+    <!-- Weather -->
+    <string name="weather_title">कृषि मौसम पूर्वानुमान</string>
+    <string name="weather_current_temp">वर्तमान तापमान</string>
+    <string name="weather_humidity">नमी (आर्द्रता)</string>
+    <string name="weather_rainfall">बारिश की संभावना</string>
+    <string name="weather_advisory_heading">किसान भाइयों के लिए सामयिक सलाह</string>
+    <string name="weather_forecast_heading">अगले 5 दिनों का मौसम</string>
+    <string name="select_district">जिला / क्षेत्र चुनें</string>
+
+    <!-- Schemes & Loans -->
+    <string name="schemes_title">प्रमाणित सरकारी योजनाएं</string>
+    <string name="loans_title">कृषि ऋण व बैंक योजनाएं</string>
+    <string name="view_official_portal">आधिकारिक पोर्टल पर जाएं</string>
+    <string name="eligibility">पात्रता की शर्तें:</string>
+    <string name="benefits">योजना के लाभ:</string>
+    <string name="how_to_apply">आवेदन करने का तरीका:</string>
+    <string name="interest_rate">ब्याज दर:</string>
+    <string name="max_limit">अधिकतम ऋण सीमा:</string>
+    <string name="documents_required">आवश्यक दस्तावेज:</string>
+
+    <!-- Common -->
+    <string name="search_placeholder">फसल, योजना, रोग या खाद खोजें…</string>
+    <string name="loading">लोड हो रहा है…</string>
+    <string name="retry">पुनः प्रयास करें</string>
+    <string name="sources_attribution">सूचना स्रोत एवं सरकारी संदर्भ</string>
+</resources>
