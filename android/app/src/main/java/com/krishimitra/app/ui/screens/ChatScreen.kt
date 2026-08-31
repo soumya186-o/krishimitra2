@@ -244,37 +244,31 @@ fun ChatScreen(
                     )
                 }
             } else {
-                // Hold-to-Talk Mic Button
-                Box(
-                    contentAlignment = Alignment.Center,
+                // Responsive Tap-to-Talk / Hold-to-Talk Mic Button
+                IconButton(
+                    onClick = {
+                        if (isListening) {
+                            voiceManager.stopListening()
+                        } else {
+                            voiceManager.startListening { query ->
+                                sendMessage(query)
+                            }
+                        }
+                    },
                     modifier = Modifier
                         .size(50.dp)
                         .clip(CircleShape)
                         .background(if (isListening) AlertRed else GreenPrimary)
-                        .pointerInteropFilter { event ->
-                            when (event.action) {
-                                MotionEvent.ACTION_DOWN -> {
-                                    voiceManager.startListening { query ->
-                                        sendMessage(query)
-                                    }
-                                    true
-                                }
-                                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                                    voiceManager.stopListening()
-                                    true
-                                }
-                                else -> false
-                            }
-                        }
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Mic,
-                        contentDescription = "Hold to talk",
+                        imageVector = if (isListening) Icons.Default.MicOff else Icons.Default.Mic,
+                        contentDescription = if (isListening) "Stop listening" else "Tap to speak",
                         tint = Color.White,
                         modifier = Modifier.size(26.dp)
                     )
                 }
             }
+
         }
     }
 }

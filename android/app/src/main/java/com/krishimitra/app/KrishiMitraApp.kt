@@ -27,7 +27,7 @@ class KrishiMitraApp : Application() {
         super.onCreate()
         dbHelper = DatabaseHelper.getInstance(this)
         apiClient = ApiClient(this)
-        localNlpEngine = LocalNLPEngine(this)
+        localNlpEngine = LocalNLPEngine(this, dbHelper)
         aiRouter = HybridAIRouter(localNlpEngine, apiClient)
         diseaseClassifier = OnnxDiseaseClassifier(this)
         voiceManager = VoiceManager(this)
