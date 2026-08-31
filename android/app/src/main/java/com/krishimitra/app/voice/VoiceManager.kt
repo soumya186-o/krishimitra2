@@ -177,10 +177,16 @@ class VoiceManager(private val context: Context) : TextToSpeech.OnInitListener {
             Locale("en", "IN")
         }
 
-        tts?.language = loc
+        val result = tts?.setLanguage(loc)
+        if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+            Log.w(TAG, "Locale $loc not supported or missing data, falling back to default locale")
+            tts?.setLanguage(Locale.ENGLISH)
+        }
+
         tts?.setSpeechRate(0.92f) // Slightly relaxed pace for maximum farmer clarity
         tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, "krishi_tts_${System.currentTimeMillis()}")
     }
+
 
     fun stopSpeaking() {
         if (isTtsReady) {
